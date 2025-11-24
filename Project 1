@@ -1,0 +1,26 @@
+#Buat Struktur Direktori 
+dita@dita-VirtualBox:~$ mkdir -p {marketing,engineering,HR}/{documen,archive}
+
+#Pindahkan dan salin file
+dita@dita-VirtualBox:~$ find . -type f -name "*.doc" -exec mv {} marketing/documen/ \;
+dita@dita-VirtualBox:~$ find . -type f -name "*.txt" -exec mv {} engineering/documen/ \;
+dita@dita-VirtualBox:~$ find . -type f -name "*.ppt" -exec mv {} HR/documen/ \;
+dita@dita-VirtualBox:~$ find . -type f -name "*.doc" -exec cp {} marketing/archive/ \;
+dita@dita-VirtualBox:~$ find . -type f -name "*.txt" -exec cp {} engineering/archive/ \;
+dita@dita-VirtualBox:~$ find . -type f -name "*.ppt" -exec cp {} HR/archive/ \;
+
+#Atur Permission 
+dita@dita-VirtualBox:~$ sudo groupadd marketing_grup
+[sudo] password for dita: 
+dita@dita-VirtualBox:~$ sudo groupadd engineering_grup
+dita@dita-VirtualBox:~$ sudo groupadd HR_grup
+dita@dita-VirtualBox:~$ sudo chown -R :marketing_grup marketing
+dita@dita-VirtualBox:~$ sudo chown -R :engineering_grup engineering
+dita@dita-VirtualBox:~$ sudo chown -R :HR_grp HR
+dita@dita-VirtualBox:~$ sudo chmod -R 770 marketing
+dita@dita-VirtualBox:~$ sudo chmod -R 770 engineering 
+dita@dita-VirtualBox:~$ sudo chmod -R 770 HR
+dita@dita-VirtualBox:~$ ls -l
+
+#Cari dan Filter 
+dita@dita-VirtualBox:~$ find . -type f -name "*.pdf" -mtime -7
